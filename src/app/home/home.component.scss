@@ -1,0 +1,28 @@
+  .home-card {
+    flex-basis: 100%;
+    padding-left: 8px;
+    padding-right: 8px;
+    justify-content: center;
+  }
+
+  .home  {
+    background-image: url("https://material.angular.io/assets/img/examples/shiba2.jpg");
+    background-repeat: no-repeat;
+    background-size: auto;
+    background-position: center;
+    height: 100%;
+    left: 0;
+    position: relative;
+    top: 0;
+    width: 100%;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .go-to-masks {
+    font-size: large;
+    position: absolute;
+    right: 16px;
+    top: 16px;
+  }

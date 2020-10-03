@@ -1,0 +1,22 @@
+<mat-toolbar color="primary">
+    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="menu button">
+        <mat-icon>menu</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">  
+        <button mat-menu-item>
+            <span>Masks</span>
+        </button>
+        <button mat-menu-item disabled>
+            <span>About the project</span>
+        </button>
+        <button mat-menu-item disabled>
+            <span>Donate</span>
+        </button>
+    </mat-menu>
+
+    <span>Guate Masks</span>
+    <span class="spacer"></span>
+    <button mat-icon-button aria-label="share button">
+        <mat-icon>share</mat-icon>
+    </button>
+</mat-toolbar>
