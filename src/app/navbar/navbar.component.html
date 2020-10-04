@@ -3,18 +3,18 @@
         <mat-icon>menu</mat-icon>
     </button>
     <mat-menu #menu="matMenu">  
-        <button mat-menu-item>
+        <button mat-menu-item [routerLink]="['/masks']">
             <span>Masks</span>
         </button>
-        <button mat-menu-item disabled>
+        <button mat-menu-item [routerLink]="['/about']">
             <span>About the project</span>
         </button>
-        <button mat-menu-item disabled>
+        <button mat-menu-item [routerLink]="['/donate']">
             <span>Donate</span>
         </button>
     </mat-menu>
 
-    <span>Guate Masks</span>
+    <button mat-button color="secondary" [routerLink]="['']"> Guate masks</button>
     <span class="spacer"></span>
     <button mat-icon-button aria-label="share button">
         <mat-icon>share</mat-icon>

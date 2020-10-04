@@ -4,6 +4,7 @@
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
+$box-padding: 10px;
 
 .spacer {
     flex: 1 1 auto;
@@ -11,7 +12,14 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .container {
     display: flex;
-    flex-wrap: nowrap;
-    margin-left: -8px;
-    margin-right: -8px;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin-left: $box-padding;
+    margin-right: $box-padding;
+}
+
+.box {
+    flex: 0 1 350px;
+    padding: $box-padding;
 }

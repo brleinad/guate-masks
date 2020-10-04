@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Mask } from '../models/mask.model';
+import { MasksService } from '../services/masks.service';
 
 @Component({
   selector: 'app-masks',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MasksComponent implements OnInit {
 
-  constructor() { }
+  masks: Mask[];
+
+  constructor(
+    private masksService: MasksService
+  ) { }
 
   ngOnInit(): void {
+    this.masks = this.masksService.getMasks();
   }
 
 }

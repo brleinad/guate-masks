@@ -1,7 +1,11 @@
-class Mask {
-    id: string;
-    type: 'H' | 'C' | 'N';
-    length: number;
-    height: number;
-    imageURL: string;
+export class Mask {
+
+    constructor(
+        public id: string,
+        public type: 'H' | 'C' | 'N',
+        public length: number,
+        public height: number,
+        public imageURL: string
+    ) {
+    }
 }

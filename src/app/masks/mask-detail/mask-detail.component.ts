@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Mask } from 'src/app/models/mask.model';
 
 @Component({
   selector: 'app-mask-detail',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./mask-detail.component.scss']
 })
 export class MaskDetailComponent implements OnInit {
+  @Input() mask : Mask;
 
   constructor() { }
 

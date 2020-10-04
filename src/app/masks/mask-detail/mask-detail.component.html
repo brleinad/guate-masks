@@ -1,18 +1,12 @@
-<mat-card class="example-card">
-    <mat-card-header>
-      <div mat-card-avatar class="example-header-image"></div>
-      <mat-card-title>Mask</mat-card-title>
-      <mat-card-subtitle></mat-card-subtitle>
-    </mat-card-header>
-    <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+<mat-card class="mask-card">
+    <img mat-card-image [src]="mask.imageURL">
     <mat-card-content>
       <p>
-          Hand made masks in Guatemala.
+        Size: {{ mask.length }} x {{ mask.height }}
       </p>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-button>Learn more</button>
-      <button mat-button routerLink="['masks']">Choose a mask</button>
+      <button mat-raised-button color="primary">Get this mask</button>
     </mat-card-actions>
   </mat-card>
   
