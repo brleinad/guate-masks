@@ -7,6 +7,8 @@
         </p>
     </mat-card-content>
     <mat-card-actions>
-        <button mat-raised-button color="primary">Get this mask</button>
+        <add-to-cart [item]="mask" [custom]="true">
+            <button mat-raised-button color="primary">Add to cart</button>
+        </add-to-cart>
     </mat-card-actions>
 </mat-card>
