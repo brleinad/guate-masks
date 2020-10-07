@@ -7,7 +7,10 @@
         </p>
     </mat-card-content>
     <mat-card-actions>
-        <button mat-raised-button color="primary" (click)="onAdd2Cart()">Add to Cart</button>
         <button mat-raised-button color="primary" [hidden]="false" [routerLink]="['/mask', mask.id]">Details</button>
+        <span class="spacer"></span>
+        <button mat-icon-button color="primary" (click)="onAdd2Cart()">
+            <mat-icon>add_shopping_cart</mat-icon>
+        </button>
     </mat-card-actions>
 </mat-card>
