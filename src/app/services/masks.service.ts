@@ -22,9 +22,12 @@ let masks: Mask[] = [
 export class MasksService {
 
   masks: Mask[] = [];
-  constructor(private contentfulService: ContentfulService) { }
+  constructor(private contentfulService: ContentfulService) { 
+
+  }
 
   getMasks(): Mask[] {
+    this.masks = [];
     this.contentfulService.getMaskEntries()
     .then(entries => {
       for (let entry of entries) {

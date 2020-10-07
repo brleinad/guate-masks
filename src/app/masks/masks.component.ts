@@ -13,10 +13,12 @@ export class MasksComponent implements OnInit {
 
   constructor(
     private masksService: MasksService
-  ) { }
+  ) { 
+  }
 
   ngOnInit(): void {
     this.masks = this.masksService.getMasks();
+    console.log(this.masks);
   }
 
 }

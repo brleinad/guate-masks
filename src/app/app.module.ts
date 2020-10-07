@@ -8,6 +8,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
+import { MatTableModule } from '@angular/material/table';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -19,6 +20,7 @@ import { MasksComponent } from './masks/masks.component';
 import { AboutComponent } from './about/about.component';
 import { MaskCardComponent } from './masks/mask-card/mask-card.component';
 import { ContentfulService } from './services/contentful.service';
+import { CartComponent } from './cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,8 @@ import { ContentfulService } from './services/contentful.service';
     HomeComponent,
     MasksComponent,
     AboutComponent,
-    MaskCardComponent
+    MaskCardComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,
@@ -40,6 +43,7 @@ import { ContentfulService } from './services/contentful.service';
     MatIconModule,  
     MatSidenavModule,
     MatListModule,
+    MatTableModule,
   ],
   providers: [
     ContentfulService,
