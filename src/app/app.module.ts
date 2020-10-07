@@ -21,6 +21,7 @@ import { AboutComponent } from './about/about.component';
 import { MaskCardComponent } from './masks/mask-card/mask-card.component';
 import { ContentfulService } from './services/contentful.service';
 import { CartComponent } from './cart/cart.component';
+import { MaskDetailComponent } from './masks/mask-detail/mask-detail.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { CartComponent } from './cart/cart.component';
     MasksComponent,
     AboutComponent,
     MaskCardComponent,
-    CartComponent
+    CartComponent,
+    MaskDetailComponent
   ],
   imports: [
     BrowserModule,

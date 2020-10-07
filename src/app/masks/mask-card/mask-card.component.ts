@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { Mask } from 'src/app/models/mask.model';
 import { CartService } from 'src/app/services/cart.service';
 
@@ -10,13 +10,15 @@ import { CartService } from 'src/app/services/cart.service';
 export class MaskCardComponent implements OnInit {
   @Input() mask: Mask;
 
-  constructor(private cartService: CartService) { }
+  constructor(
+    private cartService: CartService,
+    ) { }
 
   ngOnInit(): void {
   }
 
   onAdd2Cart() {
-    this.cartService.addItem(this.mask)
+    this.cartService.addItem(this.mask);
   }
 
 }

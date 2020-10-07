@@ -37,6 +37,10 @@ export class MasksService {
     return this.masks;
   }
 
+  getMaskById(id: number): Mask {
+    return this.masks.find(mask => mask.id == id);
+  }
+
   entry2mask(entry: Entry<any>): Mask {
     console.log(entry.fields);
     return new Mask(
