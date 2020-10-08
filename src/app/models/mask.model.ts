@@ -1,31 +1,45 @@
+import { environment } from 'src/environments/environment';
 
-const HUIPIL_PRICE = 15;
-const CORTE_PRICE = 12;
-const KIDS_PRICE = 10;
+export type MaskType = 'huipil' | 'corte' | 'kids';
 
 export class Mask {
     price: number;
+    priceKey: string;
 
     constructor(
         public id: number,
-        public type: 'huipil' | 'corte' | 'kids',
+        public type: MaskType,
         public length: number,
         public height: number,
         public imageURL: string
     ) {
-        this.calcPrice();
+        this.price = this.calcPrice();
+        this.priceKey = this.calcPriceKey();
     }
 
-    calcPrice() {
+    calcPrice(): number{
         switch (this.type) {
             case 'huipil':
-                this.price = HUIPIL_PRICE;
+                return environment.HUIPIL_PRICE;
             case 'corte':
-                this.price = CORTE_PRICE;
+                return environment.CORTE_PRICE;
             case 'kids':
-                this.price = KIDS_PRICE;
+                return environment.KIDS_PRICE;
             default:
-                this.price = KIDS_PRICE;
+                return environment.KIDS_PRICE;
+        }
+    }
+
+    calcPriceKey() {
+        switch (this.type) {
+            case 'huipil':
+                return environment.HUIPIL_PRICE_KEY;
+            case 'corte':
+                return environment.CORTE_PRICE_KEY;
+            case 'kids':
+                return environment.KIDS_PRICE_KEY;
+            default:
+                return '';
         }
     }
 }
