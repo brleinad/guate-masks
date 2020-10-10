@@ -1,17 +1,17 @@
 <mat-card class="mask-card">
-    <img mat-card-image [src]="mask.imageURL">
-    <mat-card-content>
-        <p>
-            Size: {{ mask.length }} x {{ mask.height }}
-            Type: {{ mask.type }}
-            Price: {{ mask.price }}
-        </p>
+    <a [routerLink]="['/mask', mask.id]">
+        <img mat-card-image [src]="mask.imageURL">
+    </a>
+    <mat-card-content style="display: flex;">
+        <span>{{ mask.length }} x {{ mask.height }}</span>
+        <span class="spacer"> </span>
+        <span>{{ mask.price | currency}}</span>
     </mat-card-content>
-    <mat-card-actions>
-        <button mat-raised-button color="primary" [hidden]="false" [routerLink]="['/mask', mask.id]">Details</button>
-        <span class="spacer"></span>
-        <button mat-icon-button color="primary" (click)="onAdd2Cart()">
+    <mat-card-actions style="display: flex;">
+        <span class="spacer"> </span>
+        <button mat-raised-button color="primary" (click)="onAdd2Cart()">
             <mat-icon>add_shopping_cart</mat-icon>
         </button>
+        <span class="spacer"> </span>
     </mat-card-actions>
 </mat-card>

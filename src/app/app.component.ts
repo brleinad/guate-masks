@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { CartService } from './services/cart.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,13 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'guate-masks';
+  numberOfCartItems = 0;
+  subscription: Subscription;
+
+  constructor(private cartService: CartService) {
+    this.subscription = cartService.numberOfItems$.subscribe( numberOfCartItems => {
+      this.numberOfCartItems = numberOfCartItems;
+      console.log('number of cart items on navbar is now ' + this.numberOfCartItems);
+    })
+  }
 }

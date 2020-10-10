@@ -9,6 +9,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatTableModule } from '@angular/material/table';
+import { MatBadgeModule } from '@angular/material/badge';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -31,7 +32,7 @@ import { MaskDetailComponent } from './masks/mask-detail/mask-detail.component';
     AboutComponent,
     MaskCardComponent,
     CartComponent,
-    MaskDetailComponent
+    MaskDetailComponent,
   ],
   imports: [
     BrowserModule,
@@ -46,6 +47,7 @@ import { MaskDetailComponent } from './masks/mask-detail/mask-detail.component';
     MatSidenavModule,
     MatListModule,
     MatTableModule,
+    MatBadgeModule,
   ],
   providers: [
     ContentfulService,

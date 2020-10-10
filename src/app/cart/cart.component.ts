@@ -10,7 +10,8 @@ import { CheckoutService } from '../services/checkout.service';
 })
 export class CartComponent implements OnInit {
   items: Mask[] = [];
-  displayedColumns = ['image', 'price'];
+  totalCost = 0;
+  displayedColumns = ['image', 'size', 'price', 'remove'];
 
   constructor(
     private cartService: CartService,
@@ -18,8 +19,18 @@ export class CartComponent implements OnInit {
 
   ngOnInit(): void {
     this.items = [];
-    this.items = this.cartService.getItems();
     console.log(this.items);
+    this.populateCart();
+  }
+
+  populateCart() {
+    this.items = this.cartService.getItems();
+    this.totalCost = this.cartService.calcTotal();
+  }
+
+  onRemoveItem(item: Mask) {
+    this.cartService.removeItem(item);
+    this.populateCart();
   }
 
   onCheckout() {

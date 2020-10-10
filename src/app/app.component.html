@@ -5,10 +5,10 @@
     <button mat-button color="secondary" [routerLink]="['']"> Guate masks</button>
     <span class="spacer"></span>
     <button mat-icon-button [routerLink]="['/masks']">
-        <mat-icon>shop</mat-icon>
+        <mat-icon>storefront</mat-icon>
     </button>
     <button mat-icon-button [routerLink]="['/cart']">
-        <mat-icon>shopping_cart</mat-icon>
+        <mat-icon [matBadge]="numberOfCartItems" matBadgeColor="accent" [matBadgeHidden]="!numberOfCartItems">shopping_cart</mat-icon>
     </button>
 </mat-toolbar>
 
@@ -21,5 +21,7 @@
     </mat-sidenav>
     <mat-sidenav-content>
         <router-outlet></router-outlet>
+        <footer color="primary">Contact us</footer>
     </mat-sidenav-content>
 </mat-sidenav-container>
+
