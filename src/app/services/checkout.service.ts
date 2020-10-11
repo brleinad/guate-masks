@@ -20,8 +20,11 @@ export class CheckoutService {
     const {error} = await this.stripe.redirectToCheckout({
       lineItems: this.masks2lineItems(items),
       mode: 'payment',
-      successUrl: 'http://localhost:4200/',
-      cancelUrl: 'http://localhost:4200/cart',
+      successUrl: environment.URL + '/order/success',
+      cancelUrl: environment.URL + '/cart',
+      shippingAddressCollection: {
+        allowedCountries: ['CA'],
+      }
     })
     console.error(error.message);
   }

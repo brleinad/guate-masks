@@ -1,6 +1,14 @@
 const nodemailer = require('nodemailer');
 
 exports.handler = function(event, context, callback) {
+    // Get info from strip
+
+    // Send info by email
+    sendEmail(event, callback);
+
+}
+
+const sendEmail = function(event, callback) {
     let transporter = nodemailer.createTransport({
         host: 'smtp.gmail.com',
         port: 465,
