@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Mask } from '../models/mask.model';
-import { CartService } from '../services/cart.service';
-import { CheckoutService } from '../services/checkout.service';
+import { Mask } from '../../models/mask.model';
+import { CartService } from '../../services/cart.service';
+import { CheckoutService } from '../../services/checkout.service';
 
 @Component({
   selector: 'app-cart',

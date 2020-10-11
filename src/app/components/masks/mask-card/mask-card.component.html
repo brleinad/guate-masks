@@ -2,16 +2,20 @@
     <a [routerLink]="['/mask', mask.id]">
         <img mat-card-image [src]="mask.imageURL">
     </a>
-    <mat-card-content style="display: flex;">
+    <mat-card-content class="card-content">
+        <span>{{ mask.type }}</span>
+        <span class="spacer"> </span>
         <span>{{ mask.length }} x {{ mask.height }}</span>
         <span class="spacer"> </span>
         <span>{{ mask.price | currency}}</span>
     </mat-card-content>
-    <mat-card-actions style="display: flex;">
+    <mat-card-actions class="card-actions">
+        <button mat-raised-button color="primary" (click)="onShare()">
+            <mat-icon>share</mat-icon>
+        </button>
         <span class="spacer"> </span>
         <button mat-raised-button color="primary" (click)="onAdd2Cart()">
             <mat-icon>add_shopping_cart</mat-icon>
         </button>
-        <span class="spacer"> </span>
     </mat-card-actions>
 </mat-card>

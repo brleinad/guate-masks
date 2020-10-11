@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Mask } from '../models/mask.model';
-import { MasksService } from '../services/masks.service';
+import { Mask } from '../../models/mask.model';
+import { MasksService } from '../../services/masks.service';
 
 @Component({
   selector: 'app-masks',

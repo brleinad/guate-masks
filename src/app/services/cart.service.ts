@@ -19,7 +19,7 @@ export class CartService {
   }
 
   addItem(item: Mask): void {
-    if (this.items.includes(item)) {
+    if (this.items.find( i => i.id === item.id)) {
       // TODO: tell user
       console.log('Item already in cart');
       return;

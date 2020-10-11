@@ -21,4 +21,7 @@ export class MaskCardComponent implements OnInit {
     this.cartService.addItem(this.mask);
   }
 
+  onShare() {
+  }
+
 }

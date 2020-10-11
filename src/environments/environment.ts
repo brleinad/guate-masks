@@ -4,6 +4,8 @@
 
 export const environment = {
   production: false,
+  //URL: 'https://relaxed-sinoussi-7a5a4b.netlify.app',
+  URL: 'http://localhost:4200',
   STRIPE_KEY : 'pk_test_51HZn5VFQZ3uzVtBwOxQ8Cm9xLePC2hSFWxp1yLEpQk80PI9dxeTg30zNNYkGYCYciCjoLzBiJSFpkz27ERpqymzf00iVz5go1f',
   HUIPIL_PRICE_KEY : 'price_1HZn6yFQZ3uzVtBw47v5hB9p',
   CORTE_PRICE_KEY : 'price_1HZn7yFQZ3uzVtBwkqWEemyw',

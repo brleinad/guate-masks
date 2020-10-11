@@ -16,23 +16,29 @@ import { AppComponent } from './app.component';
 import { ScullyLibModule } from '@scullyio/ng-lib';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { HomeComponent } from './home/home.component';
-import { MasksComponent } from './masks/masks.component';
-import { AboutComponent } from './about/about.component';
-import { MaskCardComponent } from './masks/mask-card/mask-card.component';
 import { ContentfulService } from './services/contentful.service';
-import { CartComponent } from './cart/cart.component';
-import { MaskDetailComponent } from './masks/mask-detail/mask-detail.component';
+
+import { HomeComponent } from './components/home/home.component';
+import { MasksComponent } from './components/masks/masks.component';
+import { MaskCardComponent } from './components/masks/mask-card/mask-card.component';
+import { CartComponent } from './components/cart/cart.component';
+import { MaskDetailComponent } from './components/masks/mask-detail/mask-detail.component';
+import { OrderStatusComponent } from './components/order-status/order-status.component';
+import { OrderSucessComponent } from './components/order-status/order-sucess/order-sucess.component';
+import { OrderFailComponent } from './components/order-status/order-fail/order-fail.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     MasksComponent,
-    AboutComponent,
     MaskCardComponent,
     CartComponent,
     MaskDetailComponent,
+    OrderStatusComponent,
+    OrderSucessComponent,
+    OrderFailComponent,
   ],
   imports: [
     BrowserModule,
