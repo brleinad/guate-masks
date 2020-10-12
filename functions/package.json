@@ -3,6 +3,7 @@
   "description": "functions",
   "dependencies": {
     "nodemailer": "^4.6.4",
-    "nodemailer-smtp-transport": "^2.7.4"
+    "nodemailer-smtp-transport": "^2.7.4",
+    "stripe": "^8.109.0"
   }
 }

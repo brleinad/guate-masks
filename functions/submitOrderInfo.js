@@ -1,14 +1,41 @@
 const nodemailer = require('nodemailer');
+const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
-exports.handler = function(event, context, callback) {
+exports.handler = async  ({body, headers}) => {
+
+    try {
     // Get info from strip
+        const stripeEvent = stripe.webhooks.constructEvent(
+            body,
+            headers['stripe-signature'],
+            process.env.STRIPE_WEBHOOK_SECRET
+        );
+        console.log(`Created stripe event ${stripeEvent}`);
 
-    // Send info by email
-    sendEmail(event, callback);
+        if (stripeEvent.type === 'checkout.session.completed') {
+            const items = stripeEvent.data.object.display_items;
+            const shippingDetails = stripeEvent.data.object.shipping;
+            console.log(`Items: ${items}`);
+            console.log(`shippingDetails: ${shippingDetails}`);
+            //sendEmail( items, shippingDetails, error => {throw error});
+        }
+
+        return { 
+            statusCode: 200,
+            body: JSON.stringify({ received: true})
+        }
+    } catch (error) {
+        console.log(`failed with ${error}`)
+        return { 
+            statusCode: 400,
+            body: `Webhook error: ${error.message}`
+        }
+    }
+
 
 }
 
-const sendEmail = function(event, callback) {
+const sendEmail = function(items, shippingDetails, callback) {
     let transporter = nodemailer.createTransport({
         host: 'smtp.gmail.com',
         port: 465,
@@ -18,14 +45,13 @@ const sendEmail = function(event, callback) {
             pass: process.env.MAIL_PASSWORD,
         }
     });
-    console.log(event.body);
 
     transporter.sendMail({
         from: process.env.MAIL_LOGIN,
         to: process.env.MAIL_TO,
-        subject: process.env.SUBJECT + new Date().toLocaleString(),
+        subject: 'New order from ' + shippingDetails.name,
         //text: event.body
-        text: 'Hello there'
+        text: JSON.stringify({items, shipping}, null, 2),
     }, function(error, info) {
     	if (error) {
     		callback(error);
