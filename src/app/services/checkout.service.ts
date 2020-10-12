@@ -19,14 +19,21 @@ export class CheckoutService {
 
     const {error} = await this.stripe.redirectToCheckout({
       lineItems: this.masks2lineItems(items),
+      // items: this.masks2skus(items),
       mode: 'payment',
-      successUrl: environment.URL + '/order/success',
+      successUrl: environment.URL + '/order/success/',
       cancelUrl: environment.URL + '/cart',
       shippingAddressCollection: {
         allowedCountries: ['CA'],
-      }
+      },
+      submitType: 'donate',
+      
     })
     console.error(error.message);
+  }
+
+  masks2skus(masks: Mask[]): {sku: string, quantity: number}[] {
+    return masks.map(mask => { return { sku: mask.id.toString(), quantity: 1} });
   }
 
   masks2lineItems(masks: Mask[]) {

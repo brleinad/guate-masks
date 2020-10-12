@@ -13,6 +13,7 @@ exports.handler = async  ({body, headers}) => {
         console.log(`Created stripe event ${stripeEvent}`);
 
         if (stripeEvent.type === 'checkout.session.completed') {
+            console.log(data.object);
             const items = stripeEvent.data.object.display_items;
             const shippingDetails = stripeEvent.data.object.shipping;
             console.log(`Items: ${items}`);
