@@ -10,6 +10,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatTableModule } from '@angular/material/table';
 import { MatBadgeModule } from '@angular/material/badge';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -54,6 +55,7 @@ import { OrderFailComponent } from './components/order-status/order-fail/order-f
     MatListModule,
     MatTableModule,
     MatBadgeModule,
+    MatSnackBarModule,
   ],
   providers: [
     ContentfulService,
