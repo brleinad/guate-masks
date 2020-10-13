@@ -1,3 +1,4 @@
+import { stripGeneratedFileSuffix } from '@angular/compiler/src/aot/util';
 import { Component, OnInit } from '@angular/core';
 import { Mask } from '../../models/mask.model';
 import { CartService } from '../../services/cart.service';
@@ -34,7 +35,14 @@ export class CartComponent implements OnInit {
   }
 
   onCheckout() {
-    this.checkoutService.onCheckout(this.items);
+    // this.checkoutService.onCheckout(this.items);
+    this.checkoutService.onCheckout(this.items).subscribe(
+      response => {
+        console.log(response);
+        this.checkoutService.onRedirect2Checkout(response.sessionId);
+      }
+    )
   }
+
 
 }

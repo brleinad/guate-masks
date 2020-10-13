@@ -13,12 +13,14 @@ exports.handler = async  ({body, headers}) => {
         console.log(`Created stripe event ${stripeEvent}`);
 
         if (stripeEvent.type === 'checkout.session.completed') {
-            console.log(data.object);
-            const items = stripeEvent.data.object.display_items;
+            console.log(stripeEvent.data.object);
+            // const items = stripeEvent.data.object.display_items;
             const shippingDetails = stripeEvent.data.object.shipping;
-            console.log(`Items: ${items}`);
+            const maskIds = stripeEvent.data.object.metadata;
+            // console.log(`Items: ${items}`);
             console.log(`shippingDetails: ${shippingDetails}`);
-            //sendEmail( items, shippingDetails, error => {throw error});
+            console.log(`maskIds: ${maskIds}`);
+            sendEmail( maskIds, shippingDetails, error => {throw error});
         }
 
         return { 
@@ -52,7 +54,7 @@ const sendEmail = function(items, shippingDetails, callback) {
         to: process.env.MAIL_TO,
         subject: 'New order from ' + shippingDetails.name,
         //text: event.body
-        text: JSON.stringify({items, shipping}, null, 2),
+        text: JSON.stringify({items, shippingDetails}, null, 2),
     }, function(error, info) {
     	if (error) {
     		callback(error);
