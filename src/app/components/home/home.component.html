@@ -1,30 +1,65 @@
-<div class="container" style="flex-flow: column;">
-  <div class="">
-    <img class="cover" src="assets/home_background.jpg" alt="Guate Masks">
-    <div class="hero-headline">
-
-      <h1 class="home-title mat-display-4">
-        GuateMasques
-      </h1>
-      <h1 class="home-subtitle mat-display-1">
-        c'est une initiative de masques solidaires.
-      </h1>
-      <button mat-flat-button class="home-masks-button" color="primary" id="go-to-masks" [routerLink]="['/masks']">
+<div class="hero-image">
+  <div class="hero-text">
+        <h1 class="mat-h1 hero-content">
+          c'est une initiative de masques solidaires.
+        </h1>
+      <button mat-flat-button class="hero-content" color="primary" id="go-to-masks" [routerLink]="['/masks']">
           Masques
       </button>
-    </div>
+      <h1 class="mat-display-1 hero-content">
+        GuateMasques
+      </h1>
+  </div>
+</div>
+
+
+<mat-divider></mat-divider>
+
+<div class="container" style="flex-flow: column;">
+<mat-divider></mat-divider>
+  <div class="box home-content-container">
+    <p class="home-content mat-body">
+      Faits à la main à partir de tissus de tradition millénaire, les Guatemasques sont l'oeuvre d'une poignée de femmes guatemaltèques dont les vies et familles se trouvent durement touchées par la COVID-19.
+    </p>
+    <mat-card class="home-content">
+        <img mat-card-image style="width: 100%; margin-top: -110px; margin-bottom: -110px;" src="http://images.ctfassets.net/lvdm1g7qic0r/6ihRmelBaDRoQ56XBRU7T0/ed6cf45d8e7d71c5e45269d663faff89/IMG_20201010_200901898-removebg-preview.png">
+    </mat-card>
   </div>
 
-  <div class="spacer"></div>
-
-  <div class="box">
-    <mat-divider></mat-divider>
-    <p>
-      Faits à la main à partir de tissus de tradition millénaire, les Guatemasques sont l'oeuvre d'une poignée de femmes guatemaltèques dont les vies et familles se trouvent durement touchées par la COVID-19.
+<mat-divider></mat-divider>
+  <div class="box home-content-container">
+    <mat-card class="home-content">
+        <img mat-card-image style="margin-bottom: -200px;" src="/assets/home0.jpg">
+    </mat-card>
+    <p class="home-content mat-body">
       Faire venir leur travail jusqu'à vous, c'est l'initiative de Daniel, un résident de Québec désireux de faire sa part pour aider le peuple guatemaltèque qui l'a vu grandir.
+    </p>
+  </div>
+
+<mat-divider></mat-divider>
+  <div class="box home-content-container">
+    <mat-card class="home-content">
+        <img mat-card-image style="" src="/assets/home1.jpg">
+    </mat-card>
+    <mat-card class="home-content">
+        <img mat-card-image style="" src="/assets/home2.jpg">
+    </mat-card>
+  </div>
+
+<mat-divider></mat-divider>
+  <div class="box home-content-container">
+    <p class="home-content mat-body">
       Sa promesse: le retour de 100% des profits aux mains de guatemaltèques dans le besoin.
     </p>
-    <p>
+    <mat-card class="home-content">
+        <img mat-card-image style="" src="/assets/home4.jpg">
+    </mat-card>
+  </div>
+
+
+<mat-divider></mat-divider>
+  <div class="box home-content-container">
+    <p class="home-content mat-body">
       Merci de tout coeur pour votre solidarité; elle fait une réelle différence!
     </p>
   </div>
