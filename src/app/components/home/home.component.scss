@@ -38,12 +38,14 @@ body {
 }
 
 .home-content {
-  flex: 0 1 450px;
+  flex: 0 1 400px;
+  width: 400px;
+  height: auto;
   // color: rgba(0,0,0,.54);
   height: auto;
   font-size: 24px;
   line-height: 32px;
-  //padding: 12px;
+  padding: 22px;
 }
 
 
