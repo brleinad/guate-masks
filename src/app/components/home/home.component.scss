@@ -1,28 +1,57 @@
-  .home-card {
-    flex-basis: 100%;
-    padding-left: 8px;
-    padding-right: 8px;
-    justify-content: center;
+  .cover  {
+    //height: auto;
+    height: 66vh;
+    width: auto;
+    //background-image: url("/assets/home_background.jpg");
+    //background-repeat: no-repeat;
+    //background-position: center;
   }
 
-  .home  {
-    background-image: url("https://material.angular.io/assets/img/examples/shiba2.jpg");
-    background-repeat: no-repeat;
-    background-size: auto;
-    background-position: center;
-    height: 100%;
-    left: 0;
-    position: relative;
-    top: 0;
-    width: 100%;
-    align-items: center;
+
+  .home-container {
     display: flex;
-    justify-content: center;
-  }
-  
-  .go-to-masks {
-    font-size: large;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
     position: absolute;
-    right: 16px;
-    top: 16px;
+    width: 90%;
+    height: 90vh;
+    top: 5%;
+    //left: 45%;
   }
+
+    .home-title {
+      text-align: center;
+      color: #FFF;
+      position: absolute;
+      top: 20%;
+      left: 30%;
+    }
+
+    .home-subtitle {
+      text-align: center;
+      color: #FFF;
+      position: absolute;
+      top: 30%;
+      left: 5%;
+    }
+
+    .home-masks-button {
+      position: absolute;
+      top: 47%;
+      left: 40%;
+    }
+
+@media(min-width: 500px) {
+  .cover {
+    width: 100vw;
+    height: auto;
+  }
+    .home-subtitle {
+      text-align: center;
+      color: #FFF;
+      position: absolute;
+      top: 30%;
+      left: 20%;
+    }
+}

@@ -37,7 +37,7 @@ export class CartComponent implements OnInit {
   onCheckout() {
     // this.checkoutService.onCheckout(this.items);
     this.checkoutService.onCheckout(this.items).subscribe(
-      response => {
+      (response) => {
         console.log(response);
         this.checkoutService.onRedirect2Checkout(response.sessionId);
       }

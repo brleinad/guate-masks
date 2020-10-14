@@ -20,7 +20,7 @@ export class CheckoutService {
   }
 
 
-  onCheckout(masks: Mask[]): Observable<string> {
+  onCheckout(masks: Mask[]): Observable<{sessionId: string}> {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
@@ -33,7 +33,7 @@ export class CheckoutService {
       maskIds: this.masks2ids(masks),
     }
     console.log('Gonnat do a post');
-    return this.http.post<string>(environment.API_URL + '/handle-checkout', body, httpOptions)
+    return this.http.post<{sessionId: string}>(environment.API_URL + '/handle-checkout', body, httpOptions)
     .pipe(
       catchError((error) => {
         console.error(error);

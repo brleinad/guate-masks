@@ -1,8 +1,31 @@
-<div class="container">
-  <mat-card class="box">
-    <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-  <button mat-flat-button color="primary" id="go-to-masks" [routerLink]="['/masks']">
-    See all mask
-  </button>
-  </mat-card>
+<div class="container" style="flex-flow: column;">
+  <div class="">
+    <img class="cover" src="assets/home_background.jpg" alt="Guate Masks">
+    <div class="hero-headline">
+
+      <h1 class="home-title mat-display-4">
+        GuateMasques
+      </h1>
+      <h1 class="home-subtitle mat-display-1">
+        c'est une initiative de masques solidaires.
+      </h1>
+      <button mat-flat-button class="home-masks-button" color="primary" id="go-to-masks" [routerLink]="['/masks']">
+          Masques
+      </button>
+    </div>
+  </div>
+
+  <div class="spacer"></div>
+
+  <div class="box">
+    <mat-divider></mat-divider>
+    <p>
+      Faits à la main à partir de tissus de tradition millénaire, les Guatemasques sont l'oeuvre d'une poignée de femmes guatemaltèques dont les vies et familles se trouvent durement touchées par la COVID-19.
+      Faire venir leur travail jusqu'à vous, c'est l'initiative de Daniel, un résident de Québec désireux de faire sa part pour aider le peuple guatemaltèque qui l'a vu grandir.
+      Sa promesse: le retour de 100% des profits aux mains de guatemaltèques dans le besoin.
+    </p>
+    <p>
+      Merci de tout coeur pour votre solidarité; elle fait une réelle différence!
+    </p>
+  </div>
 </div>
