@@ -1,4 +1,4 @@
 [build]
-    publish = "dist/guate-masks"
+    publish = "dist/static"
     command = "npm run build"
     functions = "./functions"
