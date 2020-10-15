@@ -39,14 +39,14 @@ body {
 
 .home-content {
   flex: 0 1 400px;
-  width: 400px;
+  width: 200px;
   height: auto;
   // color: rgba(0,0,0,.54);
   height: auto;
-  font-size: 24px;
-  line-height: 32px;
+  font-size: 1rem;
+  line-height: 1.5rem;
   padding: 12px;
-  margin: 32px;
+  margin-bottom: 32px;
   //hborder-radius: 32px;
 }
 
@@ -103,6 +103,9 @@ body {
 }
 
 @media(min-width: 500px) {
+  .home-content {
+    margin: 32px;
+  }
   .cover {
     width: 100vw;
     height: auto;

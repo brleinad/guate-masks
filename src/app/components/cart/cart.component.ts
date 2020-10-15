@@ -12,7 +12,7 @@ import { CheckoutService } from '../../services/checkout.service';
 export class CartComponent implements OnInit {
   items: Mask[] = [];
   totalCost = 0;
-  displayedColumns = ['image', 'size', 'price', 'remove'];
+  displayedColumns = ['image', 'price', 'action'];
 
   constructor(
     private cartService: CartService,

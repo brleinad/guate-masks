@@ -1,0 +1,18 @@
+@import '~@angular/material/theming';
+footer {
+    background-color: #673ab7;
+    height: 80px;
+    width: auto;
+    margin-top: 50px;
+    display: flex;
+    padding: 22px;
+    font-size: 1rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer-link {
+    text-decoration: none;
+    color: #FFF;
+    text-align: center;
+}

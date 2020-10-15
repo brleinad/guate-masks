@@ -21,7 +21,7 @@ export class MaskCardComponent implements OnInit {
 
   onAdd2Cart() {
     this.cartService.addItem(this.mask);
-    this.openSnackBar('Item added to cart', '');
+    this.openSnackBar('Masque ajouté au panier', '');
   }
 
   openSnackBar(message: string, action: string) {
