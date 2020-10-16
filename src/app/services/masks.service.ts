@@ -25,6 +25,7 @@ export class MasksService {
   }
 
   getMaskById(id: number): Mask {
+    this.getMasks();
     return this.masks.find(mask => mask.id == id);
   }
 

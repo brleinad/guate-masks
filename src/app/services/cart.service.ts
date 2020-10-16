@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
+import { CookieService } from 'ngx-cookie-service';
 import { Mask } from '../models/mask.model';
 
 @Injectable({
@@ -12,9 +13,13 @@ export class CartService {
 
   numberOfItems$ = this.numberOfItemsSource.asObservable();
 
-  constructor() { }
+  constructor(private cookieService: CookieService) { }
 
   getItems(): Mask[] {
+    if (this.items.length === 0) {
+      this.items = JSON.parse(this.cookieService.get('guatemasks'));
+      this.updateNumberOfItems();
+    }
     return this.items;
   }
 
@@ -40,6 +45,7 @@ export class CartService {
   }
 
   updateNumberOfItems() {
+    this.cookieService.set('guatemasks', JSON.stringify(this.items));
     this.numberOfItemsSource.next(this.items.length);
   }
 

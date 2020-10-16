@@ -16,8 +16,8 @@ exports.handler = async (event) => {
     shipping_address_collection: {
       allowed_countries: ['CA'],
     },
-    success_url: `${process.env.URL}/success`,
-    cancel_url: process.env.URL,
+    success_url: process.env.URL + '',
+    cancel_url: process.env.URL + '/cart',
     line_items: lineItems,
     metadata: maskIds,
   });

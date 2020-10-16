@@ -15,7 +15,7 @@ export class AppComponent {
   constructor(private cartService: CartService) {
     this.subscription = cartService.numberOfItems$.subscribe( numberOfCartItems => {
       this.numberOfCartItems = numberOfCartItems;
-      console.log('number of cart items on navbar is now ' + this.numberOfCartItems);
     })
+    const items = this.cartService.getItems();
   }
 }

@@ -1,1 +1,1 @@
-[{"route":"/"},{"route":"/masks"},{"route":"/cart"},{"route":"/order/success"},{"route":"/order/fail"}]
+[{"route":"/"},{"route":"/masks"},{"route":"/mask/:id"},{"route":"/cart"},{"route":"/order/success"},{"route":"/order/fail"}]

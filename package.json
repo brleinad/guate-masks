@@ -4,13 +4,14 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "cd functions &&  npm i && cd ../ && ng build && npm run scully",
+    "build": "cd functions &&  npm i && cd ../ && ng build && npm run scully -- --scanRoutes",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "scully": "scully",
     "scully:serve": "scully serve",
-    "scully-build": "ng build --prod && npm run scully"
+    "scully-build": "ng build --prod && npm run scully",
+    "stripe": "stripe listen --print-json --forward-to localhost:8888/.netlify/functions/handle-completed-checkout"
   },
   "private": true,
   "dependencies": {
@@ -29,6 +30,7 @@
     "@scullyio/scully": "^1.0.0",
     "@stripe/stripe-js": "^1.9.0",
     "contentful": "^7.14.6",
+    "ngx-cookie-service": "^10.1.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"

@@ -19,8 +19,7 @@ export class CheckoutService {
   ) { 
   }
 
-
-  onCheckout(masks: Mask[]): Observable<{sessionId: string}> {
+  createCheckoutSession(masks: Mask[]): Observable<{sessionId: string}> {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
@@ -32,31 +31,31 @@ export class CheckoutService {
       lineItems: lineItems,
       maskIds: this.masks2ids(masks),
     }
-    console.log('Gonnat do a post');
-    return this.http.post<{sessionId: string}>(environment.API_URL + '/handle-checkout', body, httpOptions)
+    return this.http.post<{sessionId: string}>(environment.API_URL + '/create-checkout-session', body, httpOptions)
     .pipe(
       catchError((error) => {
         console.error(error);
-        return throwError('Shit went down')})
+        return throwError('checkout session was not created')})
     )
+  }
 
-    /*
+  async redirect2Checkout(sessionId: string) {
     this.stripe = await loadStripe(environment.STRIPE_KEY);
-
-    const {error} = await this.stripe.redirectToCheckout({
-      lineItems: this.masks2lineItems(items),
-      // items: this.masks2skus(items),
-      mode: 'payment',
-      successUrl: environment.URL + '/order/success/',
-      cancelUrl: environment.URL + '/cart',
-      shippingAddressCollection: {
-        allowedCountries: ['CA'],
-      },
-      submitType: 'donate',
-      
+    const { error } = await this.stripe.redirectToCheckout({
+      sessionId: sessionId,
     })
-    console.error(error.message);
-    */
+    if (error) {
+      console.error(error);
+    }
+  }
+
+  onCheckout(masks: Mask[]): void {
+    this.createCheckoutSession(masks).subscribe(
+      resp => {
+        console.log(resp);
+        this.redirect2Checkout(resp.sessionId);
+      }
+    )
   }
 
   masks2skus(masks: Mask[]): {sku: string, quantity: number}[] {
@@ -108,17 +107,6 @@ export class CheckoutService {
     console.log(lineItems)
 
     return lineItems;
-  }
-
-  async onRedirect2Checkout(sessionId: string) {
-    this.stripe = await loadStripe(environment.STRIPE_KEY);
-    const { error } = await this.stripe.redirectToCheckout({
-      sessionId: sessionId,
-    })
-
-    if (error) {
-      console.error(error);
-    }
   }
 
 }
