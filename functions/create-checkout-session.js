@@ -2,6 +2,8 @@ const { isDoStatement } = require('typescript');
 
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
+// TODO: make sure masks still exist
+
 exports.handler = async (event) => {
     const {lineItems, maskIds} = JSON.parse(event.body);
     console.log('Got items');
