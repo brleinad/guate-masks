@@ -10,7 +10,9 @@ import { CheckoutService } from '../../services/checkout.service';
   styleUrls: ['./cart.component.scss']
 })
 export class CartComponent implements OnInit {
-  items: Mask[] = [];
+  // items: {mask: Mask, available: boolean}[];
+  items: Mask[];
+    
   totalCost = 0;
   displayedColumns = ['image', 'price', 'action'];
 
@@ -36,6 +38,9 @@ export class CartComponent implements OnInit {
 
   onCheckout() {
     this.checkoutService.onCheckout(this.items);
+  }
+
+  checkAvailability() {
   }
 
 

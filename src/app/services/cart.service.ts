@@ -16,10 +16,7 @@ export class CartService {
   constructor(private cookieService: CookieService) { }
 
   getItems(): Mask[] {
-    if (this.items.length === 0) {
-      this.items = JSON.parse(this.cookieService.get('guatemasks'));
-      this.updateNumberOfItems();
-    }
+    this.checkForCookies();
     return this.items;
   }
 
@@ -33,6 +30,7 @@ export class CartService {
     this.updateNumberOfItems();
   }
 
+
   removeItem(item: Mask): void {
     this.items = this.items.filter(cartItem => cartItem.id !== item.id);
     this.updateNumberOfItems();
@@ -42,6 +40,15 @@ export class CartService {
     this.total = 0;
     this.items.forEach( item => { this.total += item.price })
     return this.total;
+  }
+
+  checkForCookies() {
+    if (this.items.length === 0) {
+      if (this.cookieService.get('guatemasks')) {
+        this.items = JSON.parse(this.cookieService.get('guatemasks'));
+        this.updateNumberOfItems();
+      }
+    }
   }
 
   updateNumberOfItems() {

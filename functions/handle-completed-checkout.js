@@ -1,6 +1,15 @@
 const nodemailer = require('nodemailer');
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 const contentful = require('contentful');
+const contentfulManagement = require('contentful-management');
+
+const CONFIG = {
+    space: 'lvdm1g7qic0r',
+    accessToken: 'DV6VF78OeykSp79IIlQCJyROy-Ah_lLrtZlOhGMJ9Ic',
+    contentTypeIds: {
+        mask: 'mask'
+    }
+}
 
 exports.handler = async  ({body, headers}) => {
 
@@ -19,7 +28,7 @@ exports.handler = async  ({body, headers}) => {
         //&& stripeEvent.payment_status === 'paid') {
             console.log(stripeEvent.data.object);
             sendEmail( stripeEvent.data.object, (error, info) => {console.log(info); console.error(error);});
-            unpublishMask(stripeEvent.data.object);
+            unpublishMasks(stripeEvent.data.object);
             emailSent = true;
 
             return { 
@@ -72,15 +81,8 @@ const sendEmail = function(checkoutSession, callback) {
     });
 }
 
-const unpublishMask = async (checkoutSession) => {
+const unpublishMasks = async (checkoutSession) => {
 
-    const CONFIG = {
-        space: 'lvdm1g7qic0r',
-        accessToken: 'DV6VF78OeykSp79IIlQCJyROy-Ah_lLrtZlOhGMJ9Ic',
-        contentTypeIds: {
-            mask: 'mask'
-        }
-    }
     const client = contentful.createClient({
         space: CONFIG.space,
         accessToken: CONFIG.accessToken,
@@ -93,7 +95,6 @@ const unpublishMask = async (checkoutSession) => {
     for (let [item, itemId] of Object.entries(purchasedItems)) {
         console.log('looking for ' + itemId);
         const purchasedMasks = maskEntries.items.filter(maskEntry => {
-            //console.log(maskEntry);
             return maskEntry.fields.id === parseInt(itemId);
         });
         masksToDelete.push(...purchasedMasks);
@@ -102,12 +103,24 @@ const unpublishMask = async (checkoutSession) => {
     console.log('Gonna delete these masks ');
     console.log(masksToDelete);
 
-    /*
-    client.getSpace('<space_id>')
-        .then((space) => space.getEnvironment('<environment_id>'))
-        .then((environment) => environment.getEntry('<entry_id>'))
+    masksToDelete.forEach(mask => {
+        unpublishMask(mask);
+    });
+
+
+}
+
+const unpublishMask = async (mask) => {
+    const contentful = require('contentful-management')
+
+    const client = contentful.createClient({
+        accessToken: process.env.CONTENTFUL_MANAGEMENT_KEY
+    });
+    console.log('Deleting mask ' + mask.sys.id);
+    client.getSpace(CONFIG.space)
+        .then((space) => space.getEnvironment('master'))
+        .then((environment) => environment.getEntry(mask.sys.id))
         .then((entry) => entry.unpublish())
         .then((entry) => console.log(`Entry ${entry.sys.id} unpublished.`))
         .catch(console.error)
-        */
 }

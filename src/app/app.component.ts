@@ -16,6 +16,6 @@ export class AppComponent {
     this.subscription = cartService.numberOfItems$.subscribe( numberOfCartItems => {
       this.numberOfCartItems = numberOfCartItems;
     })
-    const items = this.cartService.getItems();
+    this.cartService.checkForCookies();
   }
 }
