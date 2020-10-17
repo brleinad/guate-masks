@@ -39,8 +39,11 @@ export class CartComponent implements OnInit {
 
   async onCheckout() {
     this.availability = await this.cartService.checkAvailability();
-    this.populateCart();
-    // this.checkoutService.onCheckout(this.items);
+    if (!this.availability) {
+      this.populateCart();
+      return;
+    }
+    this.checkoutService.onCheckout(this.items);
   }
 
   checkAvailability() {
