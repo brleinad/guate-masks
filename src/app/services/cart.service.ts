@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { CookieService } from 'ngx-cookie-service';
 import { Mask } from '../models/mask.model';
+import { MasksService } from './masks.service';
+import { ContentfulService } from './contentful.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +15,10 @@ export class CartService {
 
   numberOfItems$ = this.numberOfItemsSource.asObservable();
 
-  constructor(private cookieService: CookieService) { }
+  constructor(
+    private cookieService: CookieService,
+    private contentfulService: ContentfulService,
+    private masksService: MasksService) { }
 
   getItems(): Mask[] {
     this.checkForCookies();
@@ -49,6 +54,25 @@ export class CartService {
         this.updateNumberOfItems();
       }
     }
+  }
+
+  checkAvailability() {
+    // Not very performant but will do for now
+    console.log('setting availability');
+    const availableMasks = this.masksService.getMasks();
+    let availability = true;
+
+    this.contentfulService.getMaskEntries()
+    .then(entries => {
+        this.items = this.items.filter((item) => {
+          if (entries.find((entry) => {entry.fields.id !== item.id})) {
+            console.log(`Mask ${item.id} is not available anymore`);
+            availability = false;
+          }
+        });
+      });
+    console.log(`Availability is ${availability}`);
+    return availability;
   }
 
   updateNumberOfItems() {

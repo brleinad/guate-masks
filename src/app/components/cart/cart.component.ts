@@ -15,6 +15,7 @@ export class CartComponent implements OnInit {
     
   totalCost = 0;
   displayedColumns = ['image', 'price', 'action'];
+  availability = true;
 
   constructor(
     private cartService: CartService,
@@ -37,7 +38,8 @@ export class CartComponent implements OnInit {
   }
 
   onCheckout() {
-    this.checkoutService.onCheckout(this.items);
+    this.availability = this.cartService.checkAvailability();
+    // this.checkoutService.onCheckout(this.items);
   }
 
   checkAvailability() {

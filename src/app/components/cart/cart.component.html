@@ -1,4 +1,8 @@
 <div class="container cart">
+        <p [hidden]="availability" color="warn">
+            Some masks on your cart were not available anymore so they were deleted from your cart.
+            Please try checking out again
+        </p>
     <table mat-table [dataSource]="items" class="mat-elevation-z8 box">
 
         <ng-container matColumnDef="title">
@@ -11,20 +15,19 @@
         <ng-container matColumnDef="image">
             <th mat-header-cell *matHeaderCellDef> Masque </th>
             <td mat-cell *matCellDef="let item"> 
-                <a [routerLink]="['/mask', item.mask.id]">
+                <a [routerLink]="['/mask', item.id]">
                     <img [src]="item.imageURL"> 
                 </a>
-                <span>Mask no longer available </span>
             </td>
             <td mat-footer-cell *matFooterCellDef> Total </td>
         </ng-container>
         <ng-container matColumnDef="size">
             <th mat-header-cell *matHeaderCellDef>  </th>
-            <td mat-cell *matCellDef="let item"> {{item.mask.length}}x{{item.mask.height}} </td>
+            <td mat-cell *matCellDef="let item"> {{item.length}}x{{item.height}} </td>
         </ng-container>
         <ng-container matColumnDef="price">
             <th mat-header-cell *matHeaderCellDef> Prix </th>
-            <td mat-cell *matCellDef="let item"> {{item.mask.price | currency}} </td>
+            <td mat-cell *matCellDef="let item"> {{item.price | currency}} </td>
             <td mat-footer-cell *matFooterCellDef> {{totalCost | currency}}</td>
         </ng-container>
         <ng-container matColumnDef="action">
