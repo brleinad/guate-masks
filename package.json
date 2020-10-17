@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "cd functions &&  npm i && cd ../ && ng build && npm run scully -- --scanRoutes",
+    "build": "cd functions &&  npm i && cd ../ && ng build --prod && npm run scully -- --scanRoutes",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",

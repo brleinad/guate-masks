@@ -2,7 +2,6 @@ const { isDoStatement } = require('typescript');
 
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
-// TODO: make sure masks still exist
 
 exports.handler = async (event) => {
     const {lineItems, maskIds} = JSON.parse(event.body);
@@ -18,7 +17,7 @@ exports.handler = async (event) => {
     shipping_address_collection: {
       allowed_countries: ['CA'],
     },
-    success_url: process.env.URL + '',
+    success_url: process.env.URL + '/order/success',
     cancel_url: process.env.URL + '/cart',
     line_items: lineItems,
     metadata: maskIds,

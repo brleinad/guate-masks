@@ -46,8 +46,4 @@ export class CartComponent implements OnInit {
     this.checkoutService.onCheckout(this.items);
   }
 
-  checkAvailability() {
-  }
-
-
 }
