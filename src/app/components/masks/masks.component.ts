@@ -16,8 +16,8 @@ export class MasksComponent implements OnInit {
   ) { 
   }
 
-  ngOnInit(): void {
-    this.masks = this.masksService.getMasks();
+  async ngOnInit() {
+    this.masks = await this.masksService.getMasks();
     console.log(this.masks);
   }
 

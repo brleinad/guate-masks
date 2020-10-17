@@ -12,6 +12,7 @@ export class CartService {
   private items: Mask[] = [];
   private numberOfItemsSource = new Subject<number>();
   total = 0;
+  COOKIE = 'guatemasks'
 
   numberOfItems$ = this.numberOfItemsSource.asObservable();
 
@@ -49,35 +50,50 @@ export class CartService {
 
   checkForCookies() {
     if (this.items.length === 0) {
-      if (this.cookieService.get('guatemasks')) {
-        this.items = JSON.parse(this.cookieService.get('guatemasks'));
+      if (this.cookieService.get(this.COOKIE)) {
+        this.items = JSON.parse(this.cookieService.get(this.COOKIE));
         this.updateNumberOfItems();
       }
     }
   }
 
-  checkAvailability() {
+  async checkAvailability() {
     // Not very performant but will do for now
     console.log('setting availability');
-    const availableMasks = this.masksService.getMasks();
     let availability = true;
+    const availableMasks = await this.masksService.getMasks();
+    // const entries = await this.contentfulService.getMaskEntries();
 
-    this.contentfulService.getMaskEntries()
-    .then(entries => {
-        this.items = this.items.filter((item) => {
-          if (entries.find((entry) => {entry.fields.id !== item.id})) {
-            console.log(`Mask ${item.id} is not available anymore`);
-            availability = false;
-          }
-        });
-      });
+    this.items.forEach((item) => {
+      if (availableMasks.filter(mask =>  mask.id === item.id ).length === 0) {
+        console.log(`Mask ${item.id} is not available anymore`);
+        this.removeItem(item);
+        this.deleteItemFromCookies(item);
+        availability = false;
+      }
+    });
     console.log(`Availability is ${availability}`);
     return availability;
   }
 
+  deleteItemFromCookies(item: Mask) {
+    console.log('Deleting this item from cookies');
+    console.log(item);
+    let cookieItems = JSON.parse(this.cookieService.get(this.COOKIE));
+    console.log('cookies are');
+    console.log(cookieItems);
+    cookieItems = cookieItems.filter(cookieItem => cookieItem.id !== item.id);
+    this.cookieService.set(this.COOKIE, JSON.stringify(cookieItems));
+    this.updateNumberOfItems();
+  }
+
   updateNumberOfItems() {
-    this.cookieService.set('guatemasks', JSON.stringify(this.items));
+    this.setCookies();
     this.numberOfItemsSource.next(this.items.length);
+  }
+
+  setCookies() {
+    this.cookieService.set(this.COOKIE, JSON.stringify(this.items));
   }
 
 }

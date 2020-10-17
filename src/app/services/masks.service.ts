@@ -13,14 +13,10 @@ export class MasksService {
 
   }
 
-  getMasks(): Mask[] {
+  async getMasks(): Promise<Mask[]> {
     this.masks = [];
-    this.contentfulService.getMaskEntries()
-    .then(entries => {
-      for (let entry of entries) {
-        this.masks.push(this.entry2mask(entry));
-      }
-    });
+    const entries = await this.contentfulService.getMaskEntries();
+    this.masks = await entries.map(entry => this.entry2mask(entry));
     return this.masks;
   }
 
@@ -30,7 +26,7 @@ export class MasksService {
   }
 
   entry2mask(entry: Entry<any>): Mask {
-    console.log(entry.fields);
+    // console.log(entry.fields);
     return new Mask(
         entry.fields.id,
         entry.fields.type,
