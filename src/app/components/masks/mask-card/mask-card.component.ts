@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, OnDestroy } from '@angular/core';
-import { Mask } from 'src/app/models/mask.model';
+import { Mask, MaskType } from 'src/app/models/mask.model';
 import { CartService } from 'src/app/services/cart.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
@@ -31,6 +31,18 @@ export class MaskCardComponent implements OnInit {
   }
 
   onShare() {
+  }
+
+  transformType(maskType: MaskType): string {
+    let newMaskType = maskType.toString();
+    if (newMaskType === 'kids') {
+      newMaskType = 'enfant';
+    }
+    return this.capitalizeFirstLetter(newMaskType);
+  }
+
+  capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
   }
 
 }
