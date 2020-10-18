@@ -1,17 +1,30 @@
-<mat-toolbar color="primary" class="navbar">
-    <button mat-icon-button (click)="sidenav.toggle()">
-        <mat-icon>menu</mat-icon>
-    </button>
-    <button mat-button color="secondary" [routerLink]="['']"> GuateMasques</button>
-    <span class="spacer"></span>
-    <button mat-icon-button [routerLink]="['/masks']">
-        <mat-icon>storefront</mat-icon>
-    </button>
-    <button mat-icon-button [routerLink]="['/cart']">
-        <mat-icon [matBadge]="numberOfCartItems" matBadgeColor="accent" [matBadgeHidden]="!numberOfCartItems">shopping_cart</mat-icon>
-    </button>
-</mat-toolbar>
+<nav>
+    <mat-toolbar color="primary" class="navbar">
+        <!--
+        <button mat-icon-button (click)="sidenav.toggle()">
+            <mat-icon>menu</mat-icon>
+        </button>
+    -->
+        <button mat-button color="secondary" [routerLink]="['']"> GuateMasques</button>
+        <span class="spacer"></span>
+        <button mat-icon-button [routerLink]="['/masks']">
+            <mat-icon>storefront</mat-icon>
+        </button>
+        <button mat-icon-button [routerLink]="['/cart']">
+            <mat-icon [matBadge]="numberOfCartItems" matBadgeColor="accent" [matBadgeHidden]="!numberOfCartItems">shopping_cart</mat-icon>
+        </button>
+    </mat-toolbar>
+</nav>
 
+<main>
+    <router-outlet></router-outlet>
+</main>
+
+<footer>
+    <a href=mailto:guate.masques@gmail.com class="footer-link">guate.masques@gmail.com</a>
+</footer>
+
+<!--
 <mat-sidenav-container class="sidenav-container">
     <mat-sidenav #sidenav mode="over">
         <mat-nav-list>
@@ -20,10 +33,6 @@
         </mat-nav-list>
     </mat-sidenav>
     <mat-sidenav-content>
-        <router-outlet></router-outlet>
-        <footer>
-            <a href=mailto:guate.masques@gmail.com class="footer-link">guate.masques@gmail.com</a>
-        </footer>
     </mat-sidenav-content>
 </mat-sidenav-container>
-
+-->

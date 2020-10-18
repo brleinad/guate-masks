@@ -1,4 +1,17 @@
 @import '~@angular/material/theming';
+
+nav {
+    position: fixed;
+    top: 0;
+    overflow: hidden;
+    width: 100%;
+    z-index: 1000;
+}
+
+main {
+    margin-top: 56px;
+}
+
 footer {
     background-color: #673ab7;
     height: 80px;
