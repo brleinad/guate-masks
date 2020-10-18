@@ -4,7 +4,6 @@
 
 export const environment = {
   production: false,
-  //URL: 'https://relaxed-sinoussi-7a5a4b.netlify.app',
   URL: 'http://localhost:4200',
   API_URL: 'http://localhost:8888/.netlify/functions/',
   STRIPE_KEY : 'pk_test_51HZn5VFQZ3uzVtBwOxQ8Cm9xLePC2hSFWxp1yLEpQk80PI9dxeTg30zNNYkGYCYciCjoLzBiJSFpkz27ERpqymzf00iVz5go1f',
