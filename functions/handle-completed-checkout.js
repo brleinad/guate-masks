@@ -15,6 +15,8 @@ exports.handler = async  ({body, headers}) => {
 
     try {
     // Get info from strip
+    console.log(body);
+    console.log(process.env.STRIPE_WEBHOOK_SECRET)
         const stripeEvent = stripe.webhooks.constructEvent(
             body,
             headers['stripe-signature'],

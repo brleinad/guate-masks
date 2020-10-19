@@ -96,4 +96,17 @@ export class CartService {
     this.cookieService.set(this.COOKIE, JSON.stringify(this.items));
   }
 
+  clearAll() {
+    this.clearItems();
+    this.clearCookies();
+  }
+
+  clearItems() {
+    this.items = [];
+  }
+
+  clearCookies() {
+    this.cookieService.set(this.COOKIE, JSON.stringify([]));
+  }
+
 }
