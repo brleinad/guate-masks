@@ -1,5 +1,5 @@
 const nodemailer = require('nodemailer');
-const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY_T);
+const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 const contentful = require('contentful');
 const contentfulManagement = require('contentful-management');
 
@@ -17,11 +17,11 @@ exports.handler = async  ({body, headers}) => {
     // Get info from strip
     // console.log(body);
     console.log('Creating event');
-    console.log(process.env.STRIPE_WEBHOOK_SECRET_T)
+    console.log(process.env.STRIPE_WEBHOOK_SECRET)
         const stripeEvent = stripe.webhooks.constructEvent(
             body,
             headers['stripe-signature'],
-            process.env.STRIPE_WEBHOOK_SECRET_T
+            process.env.STRIPE_WEBHOOK_SECRET
         );
         console.log(`Created stripe event`);
         let emailSent = false;
