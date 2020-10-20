@@ -1,14 +1,16 @@
 const { isDoStatement } = require('typescript');
 
-const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
+const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY_T);
 
 
 exports.handler = async (event) => {
     const {lineItems, maskIds} = JSON.parse(event.body);
+    /*
     console.log('Got items');
     console.log(lineItems);
     console.log('Got mask Ids');
     console.log(maskIds);
+    */
 
   const session = await stripe.checkout.sessions.create({
     payment_method_types: ['card'],
@@ -23,7 +25,8 @@ exports.handler = async (event) => {
     metadata: maskIds,
   });
 
-  console.log(session);
+  // console.log(session);
+  console.log('Created checkout session');
 
   return {
     statusCode: 200,
