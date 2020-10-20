@@ -18,10 +18,11 @@ footer {
     width: auto;
     margin-top: 50px;
     display: flex;
+    flex-direction: column;
     padding: 22px;
     font-size: 1rem;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
 }
 
 .footer-link {

@@ -35,10 +35,13 @@ export class MaskCardComponent implements OnInit {
 
   transformType(maskType: MaskType): string {
     let newMaskType = maskType.toString();
-    if (newMaskType === 'kids') {
-      newMaskType = 'enfant';
+    newMaskType = this.capitalizeFirstLetter(newMaskType);
+    if (newMaskType === 'Kids') {
+      newMaskType = 'Enfant';
+    } else {
+      newMaskType = 'Adulte - ' + newMaskType;
     }
-    return this.capitalizeFirstLetter(newMaskType);
+    return newMaskType;
   }
 
   capitalizeFirstLetter(string) {

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Aleo:ital,wght@0,300;1,400&display=swap');
+
 body {
   background-color: #FFF;
 }
@@ -46,10 +48,26 @@ body {
   text-align: justify;
   font-size: 1rem;
   line-height: 1.5rem;
+  color: #595958;
+  font-family: 'Aleo', serif;
 }
 
 @media(min-width: 500px) {
+.hero-image {
+  background-position: 0% 30%;
+}
   .home-content {
     margin: 32px;
+  }
+
+  .about-card {
+    flex: 0 1 800px;
+    max-width: 800px;
+  }
+
+  .about-text {
+    font-size: 1.2rem;
+    line-height: 1.7rem;
+    text-align: left;
   }
 }
