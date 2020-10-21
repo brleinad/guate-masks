@@ -1,1 +1,37 @@
 /* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/theming';
+
+
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+$box-padding: 12px;
+
+.spacer {
+    flex: 1 1 auto;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin-left: $box-padding;
+    margin-right: $box-padding;
+    min-height: 75vh;
+}
+
+.box {
+    flex: 0 1 350px;
+    padding: $box-padding;
+}
+
+footer {
+    //hhposition: fixed;
+    //left: 0;
+    //bottom:0;
+    width: 100%;
+    //background-color: blue;
+    text-align: center;
+}

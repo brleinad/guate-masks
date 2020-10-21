@@ -1,0 +1,32 @@
+@import '~@angular/material/theming';
+
+nav {
+    position: fixed;
+    top: 0;
+    overflow: hidden;
+    width: 100%;
+    z-index: 1000;
+}
+
+main {
+    margin-top: 56px;
+}
+
+footer {
+    background-color: #673ab7;
+    height: 80px;
+    width: auto;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    padding: 22px;
+    font-size: 1rem;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.footer-link {
+    text-decoration: none;
+    color: #FFF;
+    text-align: center;
+}

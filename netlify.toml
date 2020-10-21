@@ -1,0 +1,4 @@
+[build]
+    publish = "dist/static"
+    command = "npm run build"
+    functions = "./functions"

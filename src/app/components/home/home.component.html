@@ -1,0 +1,58 @@
+<div class="hero-image">
+  <div class="hero-text">
+      <h1 class="mat-display-1 hero-content">
+        GuateMasques
+      </h1>
+      <h1 class="mat-h1 hero-content">
+        Une initiative de masques solidaires
+      </h1>
+      <!--
+      <a href="#about" class="hero-content">
+        À propos
+      </a>
+    -->
+      <button mat-flat-button class="hero-content" color="primary" id="go-to-masks" [routerLink]="['/masks']">
+          Voir nos masques
+      </button>
+  </div>
+</div>
+
+
+<div id="about" class="container" style="margin-top: 20px;">
+  <mat-card class="box" style="margin-bottom: 24px;" class="about-card">
+    <mat-card-header style="display: flex; align-items: center; justify-content: center; text-align: center;">
+      <mat-card-title>
+          <h2 class="mat-h1"><em>À propos</em></h2>
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="about-text">
+      <p>
+      Faits à la main à partir de tissus de tradition millénaire, les Guatemasques sont l'oeuvre d'une poignée de femmes
+      guatemaltèques dont les vies et familles se trouvent durement touchées par la COVID-19.
+      </p>
+
+      <p>
+      Faire venir leur travail jusqu'à vous, c'est l'initiative de Daniel, un résident de Québec désireux de faire sa part
+      pour aider le peuple guatemaltèque qui l'a vu grandir.
+      </p>
+
+      <p>
+      Sa promesse: le retour de 100% des profits aux mains de guatemaltèques dans le besoin.
+      </p>
+
+      <p>
+      Merci de tout coeur pour votre solidarité; elle fait une réelle différence!
+      </p>
+    </mat-card-content>
+    <mat-card-actions style="text-align: center;">
+      <button mat-button color="primary" [routerLink]="['/masks']">
+        Voir nos masques
+      </button>
+    </mat-card-actions>
+  </mat-card>
+
+  <img class="mat-elevation-z5 home-content" mat-card-image src="/assets/home2.jpg">
+  <img class="mat-elevation-z5 home-content" mat-card-image src="/assets/home0.jpg">
+  <img class="mat-elevation-z5 home-content" mat-card-image src="/assets/home1.jpg">
+  <img class="mat-elevation-z5 home-content" mat-card-image src="/assets/home4.jpg">
+</div>

@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Aleo:ital,wght@0,300;1,400&display=swap');
+
+body {
+  background-color: #FFF;
+}
+
+.hero-image {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/assets/home_background.jpg");
+  background-color: black;
+  height: 80vh;
+
+  /* Position and center the image to scale nicely on all screens */
+  background-position: bottom;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+
+.hero-text {
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+}
+
+.hero-content {
+  margin-top: 32px;
+}
+
+.home-content {
+  flex: 0 1 400px;
+  max-width: 300px;
+  height: auto;
+  // color: rgba(0,0,0,.54);
+  height: auto;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  padding: 12px;
+  margin-bottom: 12px;
+  margin-bottom: 12px;
+  //hborder-radius: 32px;
+}
+
+.about-text {
+  text-align: justify;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  color: #595958;
+  font-family: 'Aleo', serif;
+}
+
+@media(min-width: 500px) {
+.hero-image {
+  background-position: 0% 30%;
+}
+  .home-content {
+    margin: 32px;
+  }
+
+  .about-card {
+    flex: 0 1 800px;
+    max-width: 800px;
+  }
+
+  .about-text {
+    font-size: 1.2rem;
+    line-height: 1.7rem;
+    text-align: left;
+  }
+}
