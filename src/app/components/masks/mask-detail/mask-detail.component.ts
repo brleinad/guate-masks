@@ -19,9 +19,11 @@ export class MaskDetailComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.sub = this.route.params.subscribe(params => {
+    this.sub = this.route.params.subscribe(async (params) => {
       const id = +params['id'];
-      this.mask = this.maskService.getMaskById(id);
+      this.mask = await this.maskService.getMaskById(id);
+      console.log('Got this shit for ' + id);
+      console.log(this.mask);
     })
   }
 

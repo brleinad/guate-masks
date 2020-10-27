@@ -9,7 +9,7 @@ import { Entry } from 'contentful';
 export class MasksService {
 
   masks: Mask[] = [];
-  constructor(private contentfulService: ContentfulService) { 
+  constructor(private contentfulService: ContentfulService) {
 
   }
 
@@ -20,9 +20,9 @@ export class MasksService {
     return this.masks;
   }
 
-  getMaskById(id: number): Mask {
-    this.getMasks();
-    return this.masks.find(mask => mask.id == id);
+  async getMaskById(id: number): Promise<Mask> {
+    await this.getMasks();
+    return this.masks.filter(mask => mask.id === id)[0];
   }
 
   entry2mask(entry: Entry<any>): Mask {
