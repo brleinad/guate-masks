@@ -9,7 +9,7 @@ export const config: ScullyConfig = {
     '/mask/:id': {
       type: Masks,
       // url: 'https://raw.githubusercontent.com/brleinad/guate-masks/main/db.json',
-      url: 'https://guatemasques.ca/.netlify/functions/get-masks',
+      url: 'https://www.guatemasques.ca/.netlify/functions/get-masks',
 /*       id: {
         property: '',
       }, */
