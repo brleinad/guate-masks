@@ -5,7 +5,7 @@ export const config: ScullyConfig = {
   projectRoot: './src',
   projectName: 'guate-masks',
   outDir: './dist/static',
-  routes: {
+/*   routes: {
     'mask/:id': {
       type: 'json',
       id: {
@@ -13,11 +13,11 @@ export const config: ScullyConfig = {
         property: 'id'
       }
     }
-  }
-/*   routes: {
+  } */
+  routes: {
     '/mask/:id': {
       type: Masks,
       url: 'https://www.guatemasques.ca/.netlify/functions/get-masks',
-      },
-    }, */
+    },
+  },
 };
