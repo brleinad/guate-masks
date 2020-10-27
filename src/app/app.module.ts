@@ -13,6 +13,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDividerModule } from '@angular/material/divider';
+import {MatTabsModule} from '@angular/material/tabs';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -53,13 +54,14 @@ import { OrderFailComponent } from './components/order-status/order-fail/order-f
     MatButtonModule,
     MatMenuModule,
     MatToolbarModule,
-    MatIconModule,  
+    MatIconModule,
     MatSidenavModule,
     MatListModule,
     MatTableModule,
     MatBadgeModule,
     MatSnackBarModule,
     MatDividerModule,
+    MatTabsModule,
   ],
   providers: [
     ContentfulService,

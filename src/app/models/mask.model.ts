@@ -17,6 +17,10 @@ export class Mask {
         this.priceKey = this.calcPriceKey();
     }
 
+    isAdult(): boolean {
+      return (this.type === 'huipil' || this.type === 'corte');
+    }
+
     calcPrice(): number{
         switch (this.type) {
             case 'huipil':

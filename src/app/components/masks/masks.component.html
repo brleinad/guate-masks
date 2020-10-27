@@ -1,4 +1,13 @@
 
-<div class="container">
-    <app-mask-card  class="box" *ngFor="let mask of masks" [mask]="mask"></app-mask-card>
-</div>
+<mat-tab-group mat-align-tabs="center">
+  <mat-tab label="Adulte">
+  <div class="container">
+    <app-mask-card class="box" *ngFor="let mask of adultMasks" [mask]="mask"></app-mask-card>
+  </div>
+  </mat-tab>
+  <mat-tab label="Enfant">
+  <div class="container">
+    <app-mask-card class="box" *ngFor="let mask of kidsMasks" [mask]="mask"></app-mask-card>
+  </div>
+  </mat-tab>
+</mat-tab-group>
