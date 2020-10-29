@@ -6,6 +6,7 @@ import { loadStripe, Stripe } from '@stripe/stripe-js';
 import { environment } from 'src/environments/environment';
 import { Mask } from '../models/mask.model';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { LineItem } from '../models/line-item';
 
 
 @Injectable({
@@ -16,7 +17,7 @@ export class CheckoutService {
 
   constructor(
     private http: HttpClient
-  ) { 
+  ) {
   }
 
   createCheckoutSession(masks: Mask[]): Observable<{sessionId: string}> {
@@ -26,9 +27,9 @@ export class CheckoutService {
         'Access-Control-Allow-Origin': '*',
       })
     };
-    let lineItems = this.masks2lineItems(masks);
+    const lineItems = this.masks2lineItems(masks);
     const body = {
-      lineItems: lineItems,
+      lineItems,
       maskIds: this.masks2ids(masks),
     }
     return this.http.post<{sessionId: string}>(environment.API_URL + '/create-checkout-session', body, httpOptions)
@@ -39,10 +40,10 @@ export class CheckoutService {
     )
   }
 
-  async redirect2Checkout(sessionId: string) {
+  async redirect2Checkout(sessionId: string): Promise<void> {
     this.stripe = await loadStripe(environment.STRIPE_KEY);
     const { error } = await this.stripe.redirectToCheckout({
-      sessionId: sessionId,
+      sessionId,
     })
     if (error) {
       console.error(error);
@@ -59,24 +60,22 @@ export class CheckoutService {
   }
 
   masks2skus(masks: Mask[]): {sku: string, quantity: number}[] {
-    return masks.map(mask => { return { sku: mask.id.toString(), quantity: 1} });
+    return masks.map(mask => ({ sku: mask.id.toString(), quantity: 1}));
   }
 
   masks2ids(masks: Mask[]): any {
-    let ids = {};
+    const ids = {};
     let i = 0;
     const idsArray = masks.map(mask => mask.id);
-    idsArray.forEach((id) => {
-      ids[i++] = id}
-      );
+    idsArray.forEach(id => ids[i++] = id);
     return ids;
   }
 
-  masks2lineItems(masks: Mask[]) {
+  masks2lineItems(masks: Mask[]): LineItem[] {
     let huipilQuantity = 0;
     let corteQuantity = 0;
     let kidsQuantity = 0;
-    let lineItems: {price: string, quantity: number}[] = [];
+    const lineItems: LineItem[] = [];
 
     masks.forEach( mask => {
       switch (mask.type) {
@@ -90,21 +89,21 @@ export class CheckoutService {
           kidsQuantity++;
           break;
         default:
-          break
+          break;
       }
     })
 
     if (huipilQuantity >= 1) {
-      lineItems.push({price: environment.HUIPIL_PRICE_KEY, quantity: huipilQuantity})
+      lineItems.push({price: environment.HUIPIL_PRICE_KEY, quantity: huipilQuantity});
     }
     if (corteQuantity >= 1) {
-      lineItems.push({price: environment.CORTE_PRICE_KEY, quantity: corteQuantity})
+      lineItems.push({price: environment.CORTE_PRICE_KEY, quantity: corteQuantity});
     }
     if (kidsQuantity >= 1) {
-      lineItems.push({price: environment.KIDS_PRICE_KEY, quantity: kidsQuantity})
+      lineItems.push({price: environment.KIDS_PRICE_KEY, quantity: kidsQuantity});
     }
 
-    console.log(lineItems)
+    console.log(lineItems);
 
     return lineItems;
   }
