@@ -1,7 +1,20 @@
 <div class="container cart">
-        <p [hidden]="availability" color="warn">
-            Certains masques sélectionnés ne sont malheureusement plus disponibles. Ils ont été retirés de votre panier.
-        </p>
+  <p [hidden]="availability" color="warn">
+    Certains masques sélectionnés ne sont malheureusement plus disponibles. Ils ont été retirés de votre panier.
+  </p>
+
+  <div class="" style="margin: 32px; display: flex; flex-direction: column; align-items: center; justify-content: space-between;">
+    <label id="location" style="text-align: center; margin: 12px;">Lieu d'éxpedition</label>
+    <mat-radio-group
+      aria-labelledby="shipping-location"
+      [(ngModel)]="location"
+      class="location-radio-group">
+      <mat-radio-button class="location-radio-button" *ngFor="let location of locations" [value]="location">
+        {{location}}
+      </mat-radio-button>
+    </mat-radio-group>
+  </div>
+
     <table mat-table [dataSource]="items" class="mat-elevation-z8 box">
 
         <ng-container matColumnDef="title">
@@ -13,9 +26,9 @@
 
         <ng-container matColumnDef="image">
             <th mat-header-cell *matHeaderCellDef> Masque </th>
-            <td mat-cell *matCellDef="let item"> 
+            <td mat-cell *matCellDef="let item">
                 <a [routerLink]="['/mask', item.id]">
-                    <img [src]="item.imageURL"> 
+                    <img [src]="item.imageURL">
                 </a>
             </td>
             <td mat-footer-cell *matFooterCellDef> Total </td>
@@ -31,17 +44,21 @@
         </ng-container>
         <ng-container matColumnDef="action">
             <th mat-header-cell *matHeaderCellDef> </th>
-            <td mat-cell *matCellDef="let item" style="text-align: right;"> 
+            <td mat-cell *matCellDef="let item" style="text-align: right;">
                 <button mat-icon-button color="warn" (click)="onRemoveItem(item)">
                     <mat-icon>delete</mat-icon>
-                </button> 
-            </td>
-            <td mat-footer-cell *matFooterCellDef style="text-align: right;">
-                <button mat-raised-button color="primary" (click)="onCheckout()" [disabled]="!items.length">
-                    Paiement
                 </button>
             </td>
+            <td mat-footer-cell *matFooterCellDef style="text-align: right;">
+              <button mat-raised-button color="primary"
+              style="margin: 12px"
+              (click)="onCheckout()"
+              [disabled]="!items.length || !location">
+                  Paiement
+              </button>
+            </td>
         </ng-container>
+
 
         <!--<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>-->
         <tr mat-header-row *matHeaderRowDef="['title']"
@@ -50,4 +67,5 @@
         <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
         <tr mat-footer-row *matFooterRowDef="displayedColumns"></tr>
     </table>
+
 </div>

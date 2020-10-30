@@ -5,39 +5,39 @@ const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
 const SHIPPING_FEES = {
     upTo1Mask: {
-        canada: 'c1',
-        usa: 'u1',
-        world: 'w1',
+        canada: 'price_1HhReiFQZ3uzVtBw3yxbsZXK',
+        usa: 'price_1HhRggFQZ3uzVtBwI5ku2ohE',
+        world: 'price_1HhlVDFQZ3uzVtBws8y07Yhl',
     },
     upTo2Mask: {
-        canada: 'c2',
-        usa: 'u2',
-        world: 'w2',
+        canada: 'price_1HhRejFQZ3uzVtBw8Eq0KOvc',
+        usa: 'price_1HhRibFQZ3uzVtBwbAbRImtD',
+        world: 'price_1HhlVSFQZ3uzVtBw02Z3yg4e',
     },
     upTo4Mask: {
-        canada: '',
-        usa: '',
-        world: '',
+        canada: 'price_1HhReiFQZ3uzVtBwvTAokjJE',
+        usa: 'price_1HhlS8FQZ3uzVtBwj9SzC0QW',
+        world: 'price_1HhlVrFQZ3uzVtBw8I0MtY2y',
     },
     upTo8Mask: {
-        canada: '',
-        usa: '',
-        world: '',
+        canada: 'price_1HhRejFQZ3uzVtBwMnWU2bXj',
+        usa: 'price_1HhlSWFQZ3uzVtBwyE7my0V4',
+        world: 'price_1HhlWFFQZ3uzVtBwJRHPxlcf',
     },
     upTo12Mask: {
-        canada: '',
-        usa: '',
-        world: '',
+        canada: 'price_1HhRejFQZ3uzVtBwZLiY0hJ2',
+        usa: 'price_1HhlT8FQZ3uzVtBwzvUInOBr',
+        world: 'price_1HhlWUFQZ3uzVtBwovbTlwuB',
     },
     upTo16Mask: {
-        canada: '',
-        usa: '',
-        world: '',
+        canada: 'price_1HhRejFQZ3uzVtBw4rWJMd0x',
+        usa: 'price_1HhlT8FQZ3uzVtBwzvUInOBr',
+        world: 'price_1HhlWUFQZ3uzVtBwovbTlwuB',
     },
     upTo20Mask: {
-        canada: '',
-        usa: '',
-        world: '',
+        canada: 'price_1HhReiFQZ3uzVtBwlfcSF5Gb',
+        usa: 'price_1HhlT8FQZ3uzVtBwzvUInOBr',
+        world: 'price_1HhlWUFQZ3uzVtBwovbTlwuB',
     }
 }
 
@@ -47,7 +47,7 @@ function getShippingFees(numberOfItems, location) {
     shippingFee = SHIPPING_FEES.upTo20Mask;
   }
   if (numberOfItems <= 16) {
-    shippingFee = SHIPPING_FEES.upTo216ask;
+    shippingFee = SHIPPING_FEES.upTo16Mask;
   }
   if (numberOfItems <= 12) {
     shippingFee = SHIPPING_FEES.upTo12Mask;
@@ -61,9 +61,20 @@ function getShippingFees(numberOfItems, location) {
   if (numberOfItems <= 2) {
     shippingFee = SHIPPING_FEES.upTo2Mask;
   }
+  console.log('Number of items is ' + numberOfItems);
+  console.log('Doing shipping fee ' + shippingFee[location]);
+  console.log(location);
+  console.log(shippingFee);
 
-  return shippingFee[location];
+  return {price: shippingFee[location], quantity: 1};
+}
 
+function calcTotalQuantity(lineItems) {
+  let quantity = 0;
+  lineItems.forEach(lineItem => {
+    quantity += lineItem.quantity
+  });
+  return quantity;
 }
 
 exports.handler = async (event) => {
@@ -74,7 +85,9 @@ exports.handler = async (event) => {
     console.log('Got mask Ids');
     console.log(maskIds);
     */
-   lineItems.push(getShippingFees(lineItems.length, shippingLocation));
+   console.log('line items are ');
+   console.log(lineItems);
+   lineItems.push(getShippingFees(calcTotalQuantity(lineItems), shippingLocation));
 
   const session = await stripe.checkout.sessions.create({
     payment_method_types: ['card'],
@@ -96,7 +109,7 @@ exports.handler = async (event) => {
     statusCode: 200,
     body: JSON.stringify({
       sessionId: session.id,
-      // publishableKey: process.env.STRIPE_PUBLISHABLE_KEY,
+      publishableKey: process.env.STRIPE_PUBLISHABLE_KEY,
     }),
   };
 };

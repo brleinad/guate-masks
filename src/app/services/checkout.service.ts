@@ -20,7 +20,7 @@ export class CheckoutService {
   ) {
   }
 
-  createCheckoutSession(masks: Mask[]): Observable<{sessionId: string}> {
+  createCheckoutSession(masks: Mask[], location: 'canada' | 'usa' | 'world'): Observable<{sessionId: string, publishableKey: string}> {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
@@ -28,11 +28,13 @@ export class CheckoutService {
       })
     };
     const lineItems = this.masks2lineItems(masks);
+    console.log('Shipping to ' + location);
     const body = {
       lineItems,
       maskIds: this.masks2ids(masks),
+      shippingLocation: location,
     }
-    return this.http.post<{sessionId: string}>(environment.API_URL + '/create-checkout-session', body, httpOptions)
+    return this.http.post<{sessionId: string, publishableKey: string}>(environment.API_URL + '/create-checkout-session', body, httpOptions)
     .pipe(
       catchError((error) => {
         console.error(error);
@@ -40,8 +42,8 @@ export class CheckoutService {
     )
   }
 
-  async redirect2Checkout(sessionId: string): Promise<void> {
-    this.stripe = await loadStripe(environment.STRIPE_KEY);
+  async redirect2Checkout(stripeKey: string, sessionId: string): Promise<void> {
+    this.stripe = await loadStripe(stripeKey);
     const { error } = await this.stripe.redirectToCheckout({
       sessionId,
     })
@@ -50,11 +52,11 @@ export class CheckoutService {
     }
   }
 
-  onCheckout(masks: Mask[]): void {
-    this.createCheckoutSession(masks).subscribe(
+  onCheckout(masks: Mask[], location: 'canada' | 'usa' | 'world'): void {
+    this.createCheckoutSession(masks, location).subscribe(
       resp => {
         console.log(resp);
-        this.redirect2Checkout(resp.sessionId);
+        this.redirect2Checkout(resp.publishableKey, resp.sessionId);
       }
     )
   }

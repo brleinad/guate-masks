@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule} from '@angular/material/button';
@@ -14,6 +15,8 @@ import { MatBadgeModule } from '@angular/material/badge';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDividerModule } from '@angular/material/divider';
 import {MatTabsModule} from '@angular/material/tabs';
+import {MatRadioModule} from '@angular/material/radio';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -47,6 +50,7 @@ import { OrderFailComponent } from './components/order-status/order-fail/order-f
   imports: [
     BrowserModule,
     HttpClientModule,
+    FormsModule,
     AppRoutingModule,
     ScullyLibModule,
     BrowserAnimationsModule,
@@ -62,6 +66,7 @@ import { OrderFailComponent } from './components/order-status/order-fail/order-f
     MatSnackBarModule,
     MatDividerModule,
     MatTabsModule,
+    MatRadioModule,
   ],
   providers: [
     ContentfulService,

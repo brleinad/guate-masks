@@ -10,9 +10,10 @@ import { CheckoutService } from '../../services/checkout.service';
   styleUrls: ['./cart.component.scss']
 })
 export class CartComponent implements OnInit {
-  // items: {mask: Mask, available: boolean}[];
   items: Mask[];
-    
+  location: 'canada' | 'usa' | 'world';
+  locations = ['canada', 'usa', 'world'];
+
   totalCost = 0;
   displayedColumns = ['image', 'price', 'action'];
   availability = true;
@@ -27,23 +28,23 @@ export class CartComponent implements OnInit {
     this.populateCart();
   }
 
-  populateCart() {
+  populateCart(): void {
     this.items = this.cartService.getItems();
     this.totalCost = this.cartService.calcTotal();
   }
 
-  onRemoveItem(item: Mask) {
+  onRemoveItem(item: Mask): void {
     this.cartService.removeItem(item);
     this.populateCart();
   }
 
-  async onCheckout() {
+  async onCheckout(): Promise<void> {
     this.availability = await this.cartService.checkAvailability();
     if (!this.availability) {
       this.populateCart();
       return;
     }
-    this.checkoutService.onCheckout(this.items);
+    this.checkoutService.onCheckout(this.items, this.location);
   }
 
 }
