@@ -1,9 +1,12 @@
 import { Injectable } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Subject } from 'rxjs';
 import { CookieService } from 'ngx-cookie-service';
 import { Mask } from '../models/mask.model';
 import { MasksService } from './masks.service';
 import { ContentfulService } from './contentful.service';
+
+const MAX_CART_ITEMS = 20;
 
 @Injectable({
   providedIn: 'root'
@@ -19,6 +22,7 @@ export class CartService {
   constructor(
     private cookieService: CookieService,
     private contentfulService: ContentfulService,
+    private _snackBar: MatSnackBar,
     private masksService: MasksService) { }
 
   getItems(): Mask[] {
@@ -28,12 +32,24 @@ export class CartService {
 
   addItem(item: Mask): void {
     if (this.items.find( i => i.id === item.id)) {
-      // TODO: tell user
+      this.openSnackBar('Le masque est déjà dans le panier', '');
       console.log('Item already in cart');
       return;
     }
+    if (this.items.length >= MAX_CART_ITEMS) {
+
+      this.openSnackBar('Le panier est plein', '');
+      return;
+    }
     this.items.push(item);
+    this.openSnackBar('Masque ajouté au panier', '');
     this.updateNumberOfItems();
+  }
+
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action, {
+      duration: 4000,
+    });
   }
 
 
