@@ -16,6 +16,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDividerModule } from '@angular/material/divider';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatRadioModule} from '@angular/material/radio';
+import {MatPaginatorModule} from '@angular/material/paginator';
+
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -23,6 +25,7 @@ import { AppComponent } from './app.component';
 import { ScullyLibModule } from '@scullyio/ng-lib';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { ContentfulService } from './services/contentful.service';
 
 import { HomeComponent } from './components/home/home.component';
@@ -54,6 +57,7 @@ import { OrderFailComponent } from './components/order-status/order-fail/order-f
     AppRoutingModule,
     ScullyLibModule,
     BrowserAnimationsModule,
+    InfiniteScrollModule,
     MatCardModule,
     MatButtonModule,
     MatMenuModule,
@@ -67,6 +71,7 @@ import { OrderFailComponent } from './components/order-status/order-fail/order-f
     MatDividerModule,
     MatTabsModule,
     MatRadioModule,
+    MatPaginatorModule,
   ],
   providers: [
     ContentfulService,
