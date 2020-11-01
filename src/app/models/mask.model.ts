@@ -21,6 +21,18 @@ export class Mask {
       return (this.type === 'huipil' || this.type === 'corte');
     }
 
+    isSmall(): boolean {
+      return this.height <= environment.SMALL_SIZE;
+    }
+
+    isMedium(): boolean {
+      return this.height <= environment.MEDIUM_SIZE && this.height > environment.SMALL_SIZE;
+    }
+
+    isLarge(): boolean {
+      return this.height > environment.MEDIUM_SIZE;
+    }
+
     calcPrice(): number{
         switch (this.type) {
             case 'huipil':

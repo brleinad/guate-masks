@@ -77,6 +77,18 @@ function calcTotalQuantity(lineItems) {
   return quantity;
 }
 
+function getAllowedCountries(location) {
+  switch(location) {
+    case ('canada'):
+      return ['CA'];
+    case ('usa'):
+      return ['US'];
+    default:
+    return ['AT', 'FR', 'NO', 'IE', 'IT', 'DE'];
+  }
+
+}
+
 exports.handler = async (event) => {
     const {lineItems, maskIds, shippingLocation} = JSON.parse(event.body);
     /*
@@ -94,7 +106,7 @@ exports.handler = async (event) => {
     mode: 'payment',
     billing_address_collection: 'auto',
     shipping_address_collection: {
-      allowed_countries: ['CA', 'US', 'AT', 'IE', 'IT', 'DE'],
+      allowed_countries: getAllowedCountries(shippingLocation),
     },
     success_url: process.env.URL + '/order/success',
     cancel_url: process.env.URL + '/cart',

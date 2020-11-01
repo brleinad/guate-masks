@@ -9,7 +9,7 @@
       aria-labelledby="shipping-location"
       [(ngModel)]="location"
       class="location-radio-group">
-      <mat-radio-button class="location-radio-button" *ngFor="let location of locations" [value]="location">
+      <mat-radio-button color="primary" class="location-radio-button" *ngFor="let location of locations" [value]="location">
         {{location}}
       </mat-radio-button>
     </mat-radio-group>

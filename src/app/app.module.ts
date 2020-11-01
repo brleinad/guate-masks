@@ -16,7 +16,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDividerModule } from '@angular/material/divider';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatRadioModule} from '@angular/material/radio';
-import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+
 
 
 
@@ -71,7 +72,7 @@ import { OrderFailComponent } from './components/order-status/order-fail/order-f
     MatDividerModule,
     MatTabsModule,
     MatRadioModule,
-    MatPaginatorModule,
+    MatCheckboxModule,
   ],
   providers: [
     ContentfulService,

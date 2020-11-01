@@ -15,6 +15,9 @@ export const environment = {
   HUIPIL_PRICE : 15,
   CORTE_PRICE : 12,
   KIDS_PRICE : 10,
+  SMALL_SIZE: 12,
+  MEDIUM_SIZE: 13,
+  LARGE_SIZE: 14,
 };
 
 /*

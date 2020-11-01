@@ -1,16 +1,22 @@
 
 <mat-tab-group mat-align-tabs="center">
   <mat-tab label="Adulte">
-  <div class="container" infiniteScroll (scrolled)="onAdultsScrollDown()">
-    <app-mask-card class="box" *ngFor="let mask of displayedAdultMasks" [mask]="mask"></app-mask-card>
-    <!-- <button mat-raised-button (click)="onLoadMore()" class="box">Load more</button> -->
-<!--     <mat-paginator [length]="adultMasks.length" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]">
-    </mat-paginator> -->
-  </div>
+    <ng-template matTabContent>
+      <div class="sizes-container">
+      <mat-checkbox color="primary" class="size-checkbox" [(ngModel)]="showSmall" (click)="onChangeSize()">Petit</mat-checkbox>
+        <mat-checkbox color="primary" class="size-checkbox" [(ngModel)]="showMedium" (click)="onChangeSize()">Moyen</mat-checkbox>
+        <mat-checkbox color="primary" class="size-checkbox" [(ngModel)]="showLarge" (click)="onChangeSize()">Grand</mat-checkbox>
+      </div>
+      <div class="container" infiniteScroll (scrolled)="onAdultsScrollDown()">
+        <app-mask-card class="box" *ngFor="let mask of displayedAdultMasks?.slice(0, adultMasksDisplayed)" [mask]="mask"></app-mask-card>
+      </div>
+    </ng-template>
   </mat-tab>
   <mat-tab label="Enfant">
-  <div class="container" infiniteScroll (scrolled)="onKidsScrollDown()">
-    <app-mask-card class="box" *ngFor="let mask of displayedKidsMasks" [mask]="mask"></app-mask-card>
-  </div>
+    <ng-template matTabContent>
+      <div class="container" infiniteScroll (scrolled)="onKidsScrollDown()">
+        <app-mask-card class="box" *ngFor="let mask of displayedKidsMasks" [mask]="mask"></app-mask-card>
+      </div>
+    </ng-template>
   </mat-tab>
 </mat-tab-group>
