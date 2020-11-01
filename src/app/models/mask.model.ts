@@ -33,6 +33,20 @@ export class Mask {
       return this.height > environment.MEDIUM_SIZE;
     }
 
+    getSize(): string {
+      let size = ''
+      if (this.isSmall()) {
+        size = 'Petit';
+      }
+      if (this.isMedium()) {
+        size = 'Moyen';
+      }
+      if (this.isLarge()) {
+        size = 'Grand';
+      }
+      return size;
+    }
+
     calcPrice(): number{
         switch (this.type) {
             case 'huipil':

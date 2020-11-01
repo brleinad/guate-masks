@@ -47,4 +47,16 @@ export class CartComponent implements OnInit {
     this.checkoutService.onCheckout(this.items, this.location);
   }
 
+  locationToString(location: string): string {
+
+    switch(location) {
+      case('canada'):
+        return 'Canada';
+      case('usa'):
+        return 'USA';
+      case('world'):
+        return 'International';
+    }
+  }
+
 }
