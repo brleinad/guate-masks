@@ -1,10 +1,5 @@
 <nav>
     <mat-toolbar color="primary" class="navbar">
-        <!--
-        <button mat-icon-button (click)="sidenav.toggle()">
-            <mat-icon>menu</mat-icon>
-        </button>
-    -->
         <button mat-button color="secondary" [routerLink]="['']"> GuateMasques</button>
         <span class="spacer"></span>
         <button mat-icon-button [routerLink]="['/masks']">
@@ -21,19 +16,6 @@
 </main>
 
 <footer>
-    <a href=mailto:guate.masques@gmail.com class="footer-link">guate.masques@gmail.com</a>
+    <a href="mailto:info@guatemasques.ca" class="footer-link">info@guatemasques.ca</a>
     &#169; 2020 Daniel Rodas Bautista
 </footer>
-
-<!--
-<mat-sidenav-container class="sidenav-container">
-    <mat-sidenav #sidenav mode="over">
-        <mat-nav-list>
-            <a mat-list-item [routerLink]="['/masks']">Masks</a>
-            <a mat-list-item [routerLink]="['/about']">About</a>
-        </mat-nav-list>
-    </mat-sidenav>
-    <mat-sidenav-content>
-    </mat-sidenav-content>
-</mat-sidenav-container>
--->
