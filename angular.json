@@ -6,7 +6,7 @@
     "guate-masks": {
       "projectType": "application",
       "i18n": {
-        "sourceLocale": "fr-ca",
+        "sourceLocale": "fr-ca"
       },
       "schematics": {
         "@schematics/angular:component": {
