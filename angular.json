@@ -8,9 +8,6 @@
       "schematics": {
         "@schematics/angular:component": {
           "style": "scss"
-        },
-      "i18n": {
-        "sourceLocale": "fr-ca"
         }
       },
       "root": "",
