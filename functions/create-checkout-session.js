@@ -42,7 +42,7 @@ const SHIPPING_FEES = {
 }
 
 function getShippingFees(numberOfItems, location) {
-  let shippingFee = SHIPPING_FEES.upTo1Mask;
+  let shippingFee = SHIPPING_FEES.upTo4Mask;
   if (numberOfItems <= 20) {
     shippingFee = SHIPPING_FEES.upTo20Mask;
   }
@@ -57,9 +57,6 @@ function getShippingFees(numberOfItems, location) {
   }
   if (numberOfItems <= 4) {
     shippingFee = SHIPPING_FEES.upTo4Mask;
-  }
-  if (numberOfItems <= 2) {
-    shippingFee = SHIPPING_FEES.upTo2Mask;
   }
   console.log('Number of items is ' + numberOfItems);
   console.log('Doing shipping fee ' + shippingFee[location]);
